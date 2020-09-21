@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> VueJS </title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        
+    </head>
+    <body>
+        <div id="app">
+          {{ message }}
+        </div>
+        <div id="app2">
+            <h1 v-if="hola">{{ message }}</h1>
+            <h1 v-else>{{ message2 }}</h1>
+        </div>
+        <div id="app3">
+          <ol>
+            <li v-for="x in dias">
+              {{ x.dia }}
+            </li>
+          </ol>
+        </div>
+        <div id="app4">
+          <p>{{ message }}</p>
+          <button v-on:click="cambiaMensaje">cambia el mensaje!</button>
+        </div>
+        <hr>
+        <hr>
+        <hr>
+        <div id="app5">
+            <p>Escribe tu nombre</p>
+            <div>
+                <input v-model="name">
+                <button v-on:click="listo">listo</button>
+                <p v-if="!isHidden">Tu nombre es {{ name }}</p>
+            </div>
+        </div>
+    <script> 
+            var app = new Vue({
+              el: '#app',
+              data: {
+                message: 'Hello Vue!'
+              }
+            });
+
+            var app2 = new Vue({
+              el: '#app2',
+              data: {
+                hola: true,
+                message : 'caso if',
+                message2 : 'caso else'
+              }
+            });
+            var app3 = new Vue({
+              el: '#app3',
+              data: {
+                dias: [
+                  { dia: 'Lunes' },
+                  { dia: 'Martes' },
+                  { dia: 'Miercoles' }
+                ]
+              }
+            })
+            var app4 = new Vue({
+              el: '#app4',
+              data: {
+                message: 'Buenos dias'
+              },
+              methods: {
+                cambiaMensaje: function () {
+                  this.message = "Buenas Noches!"
+                }
+              }
+            })
+            var app5 = new Vue({
+              el: '#app5',
+              data: {
+                isHidden: true
+              },
+              methods: {
+                listo: function () {
+                  this.isHidden = false
+                }
+              }
+            })
+        </script>
+    </body>
+</html> 
